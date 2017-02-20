@@ -8,9 +8,9 @@ interface TemperatureInputProps {
     onChange: (value: string) => void;
 }
 
-const scaleNames = {
-    c: 'Celsius',
-    f: 'Fahrenheit'
+const scaleNamesMap: { [scaleKey: string]: string; } = {
+    [TemperatureTypes.CelciusKey]: 'Celsius',
+    [TemperatureTypes.FarenheitKey]: 'Fahrenheit'
 };
 
 class TemperatureInput extends React.Component<TemperatureInputProps, {}> {
@@ -23,7 +23,7 @@ class TemperatureInput extends React.Component<TemperatureInputProps, {}> {
 
         return (
             <fieldset>
-                <legend>Enter temperature in {scaleNames[scale]}:</legend>
+                <legend>Enter temperature in {scaleNamesMap[scale]}:</legend>
                 <input value={value} onChange={this.handleChange} />
             </fieldset>
         );
