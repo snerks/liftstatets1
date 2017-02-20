@@ -1,37 +1,37 @@
 import * as React from 'react';
 
-export interface BoilingVerdictProps {
+interface BoilingVerdictProps {
     celsius: number;
 }
 
-function BoilingVerdict(props: BoilingVerdictProps) {
+const BoilingVerdict: React.SFC<BoilingVerdictProps> = (props) => {
     if (props.celsius >= 100) {
         return <p>The water would boil.</p>;
     }
     return <p>The water would not boil.</p>;
+};
+
+interface CalculatorProps {
+
 }
 
-export interface CalculatorProps {
-
-}
-
-export interface CalculatorState {
+interface CalculatorState {
     value: string;
 }
 
 class Calculator extends React.Component<CalculatorProps, CalculatorState> {
     constructor(props: CalculatorProps) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
         this.state = { value: '' };
     }
 
-    handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({ value: e.target.value });
     }
 
     render() {
-        const value = this.state.value;
+        const { value } = this.state;
+
         return (
             <fieldset>
                 <legend>Enter temperature in Celsius:</legend>
